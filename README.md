@@ -17,7 +17,7 @@ Clone this repository, change into its directory, then run:
 
 ```bash
 docker build -t looproom:local .
-docker run -d --name looproom -p 8080:80 looproom:local
+docker run -d --name looproom -p 8081:80 looproom:local
 ```
 
 Alternatively, with Docker Compose:
@@ -34,14 +34,16 @@ From the repository directory:
 
 ```bash
 podman build -t localhost/looproom:local .
-podman run -d --name looproom -p 8080:80 localhost/looproom:local
+podman run -d --name looproom -p 8081:80 localhost/looproom:local
 ```
 
-These Podman commands can run rootless. Host port 8080 does not require a privileged port binding. Automatic startup after reboot can be configured separately with a systemd/Quadlet service.
+These Podman commands can run rootless. Host port 8081 does not require a privileged port binding. Automatic startup after reboot can be configured separately with a systemd/Quadlet service.
 
 ## Open the player
 
-Open `http://YOUR_PI_IP:8080` on a device on the same network, or `http://localhost:8080` in a browser running on the Pi. Replace `YOUR_PI_IP` with the Pi's actual address.
+The container listens on port 80; Docker or Podman publishes it as port 8081 on the Pi.
+
+Open `http://YOUR_PI_IP:8081` on a device on the same network, or `http://localhost:8081` in a browser running on the Pi. Replace `YOUR_PI_IP` with the Pi's actual address.
 
 The Dockerfile uses the official multi-architecture Nginx Alpine image. Building on the Pi selects its supported native architecture. The initial image pull needs internet access; the built app has no external runtime dependencies. There is no application build step.
 
