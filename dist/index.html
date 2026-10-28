@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101311">
+  <meta name="description" content="Your personal music practice room. Slow down songs, keep the pitch, and repeat any section with A–B loops.">
+  <title>Looproom — Find your flow</title>
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <svg class="icon-sprite" aria-hidden="true"><defs>
+    <symbol id="i-loop" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4M3 11V8a2 2 0 0 1 2-2h16M7 22l-4-4 4-4m14-1v3a2 2 0 0 1-2 2H3"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7Z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M3 10a9 9 0 1 1 1.7 8M3 4v6h6"/><text x="9" y="16" stroke="none" fill="currentColor" font-size="9" font-family="sans-serif" font-weight="600">5</text></symbol>
+    <symbol id="i-forward" viewBox="0 0 24 24"><path d="M21 10a9 9 0 1 0-1.7 8M21 4v6h-6"/><text x="9" y="16" stroke="none" fill="currentColor" font-size="9" font-family="sans-serif" font-weight="600">5</text></symbol>
+    <symbol id="i-volume" viewBox="0 0 24 24"><path d="m11 5-6 4H2v6h3l6 4Zm4 3a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></symbol>
+    <symbol id="i-muted" viewBox="0 0 24 24"><path d="m11 5-6 4H2v6h3l6 4Zm6 4 5 6m0-6-5 6"/></symbol>
+    <symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V5l12-3v13M9 9l12-3"/><ellipse cx="5" cy="18" rx="4" ry="3"/><ellipse cx="17" cy="15" rx="4" ry="3"/></symbol>
+    <symbol id="i-headphones" viewBox="0 0 24 24"><path d="M3 14v-3a9 9 0 0 1 18 0v3M3 12h4v9H5a2 2 0 0 1-2-2Zm18 0h-4v9h2a2 2 0 0 0 2-2Z"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7M14 10v7"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-keyboard" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M6 9h.01M10 9h.01M14 9h.01M18 9h.01M6 12h.01M10 12h.01M14 12h.01M18 12h.01M7 15h10"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+  </defs></svg>
+
+  <header class="app-header">
+    <a class="brand" href="./" aria-label="Looproom home"><span class="brand-icon"><svg><use href="#i-loop"/></svg></span>looproom<span class="brand-dot">.</span></a>
+    <span class="header-mantra">A little slower. A little better.</span>
+    <div class="header-actions"><span class="private-badge"><i></i> Your personal practice space</span><button class="icon-button" id="shortcuts-btn" title="Keyboard shortcuts (?)" aria-label="Keyboard shortcuts"><svg><use href="#i-keyboard"/></svg></button></div>
+  </header>
+
+  <div class="app-layout">
+    <aside class="sidebar">
+      <div class="library-heading"><h2>Your tracks</h2><span class="track-count" id="track-count">01</span></div>
+      <button class="upload-button" id="upload-btn"><svg><use href="#i-plus"/></svg>Add a song</button>
+      <p class="file-formats">MP3, WAV, M4A, OGG & FLAC*</p>
+      <div class="track-list" id="track-list" aria-label="Your music tracks"></div>
+      <p class="format-note">*Playback depends on your browser.</p>
+      <div class="sidebar-bottom"><div class="practice-note"><svg><use href="#i-headphones"/></svg><h3>Good things take repetition.</h3><p>One tricky section.<br>One more time. You've got this.</p></div><div class="privacy-note"><i></i> Your audio stays on this device.</div></div>
+    </aside>
+
+    <main>
+      <div class="page-heading"><div><div class="eyebrow"><span></span>THE PRACTICE ROOM</div><h1>Find your flow<span>.</span></h1><p>Slow it down. Loop the tricky part. Make it yours.</p></div><div class="session-badge"><svg><use href="#i-headphones"/></svg><span>Less rush.<br><strong>More rhythm.</strong></span></div></div>
+
+      <section class="player-card" aria-label="Music player">
+        <div class="track-header"><div class="cover-art" aria-hidden="true"><div class="cover-rings"></div><svg><use href="#i-music"/></svg></div><div class="now-playing"><span class="eyebrow">NOW PRACTISING</span><h2 id="now-title">Sunday groove</h2><p id="track-info">Original demo · Guitar & keys</p></div><span class="playback-status" id="playback-status"><i></i><span>READY WHEN YOU ARE</span></span></div>
+        <div class="wave-heading"><span class="section-label">THE WHOLE PICTURE</span><span class="wave-help">Click to seek <span>·</span> Drag A & B to select a loop</span></div>
+        <div class="wave-area" id="wave-area" role="group" aria-label="Song waveform and loop points">
+          <div class="wave-ruler" id="wave-ruler"></div>
+          <div class="wave-body" id="wave-body"><canvas id="waveform" tabindex="0" role="slider" aria-label="Song position. Use arrow keys to seek." aria-valuemin="0" aria-valuemax="48" aria-valuenow="0" aria-valuetext="0 seconds"></canvas><div class="loop-selection" id="loop-selection"></div><div class="playhead" id="playhead"><i></i></div><button class="loop-marker marker-a" id="marker-a" aria-label="Loop start. Use arrow keys to adjust." role="slider" aria-valuemin="0" aria-valuemax="48" aria-valuenow="8"><span>A</span></button><button class="loop-marker marker-b" id="marker-b" aria-label="Loop end. Use arrow keys to adjust." role="slider" aria-valuemin="0" aria-valuemax="48" aria-valuenow="24"><span>B</span></button><p class="wave-loading" id="wave-loading">Preparing your waveform…</p></div>
+        </div>
+        <div class="time-row"><span id="current-time">0:00.0</span><span class="loop-caption" id="loop-caption">A little repetition goes a long way.</span><span id="total-time">0:48.0</span></div>
+        <div class="transport"><div class="transport-left"><button id="transport-loop" class="icon-button" aria-label="Enable loop" aria-pressed="false" title="Toggle loop (L)"><svg><use href="#i-loop"/></svg></button><span id="transport-loop-label">Loop off</span></div><div class="transport-center"><button class="icon-button skip-button" id="back-btn" aria-label="Back 5 seconds" title="Back 5 seconds (←)"><svg><use href="#i-back"/></svg></button><button class="play-button" id="play-btn" aria-label="Play" title="Play / pause (Space)"><svg><use href="#i-play"/></svg></button><button class="icon-button skip-button" id="forward-btn" aria-label="Forward 5 seconds" title="Forward 5 seconds (→)"><svg><use href="#i-forward"/></svg></button></div><div class="volume-control"><button class="icon-button" id="mute-btn" aria-label="Mute"><svg><use href="#i-volume"/></svg></button><input type="range" id="volume" min="0" max="1" step="0.01" value="0.8" aria-label="Volume"></div></div>
+      </section>
+
+      <div class="tools-grid">
+        <section class="tool-card speed-card" aria-labelledby="speed-title"><div class="tool-heading"><h2 id="speed-title">Set your pace</h2><span class="pitch-badge"><svg><use href="#i-check"/></svg>Pitch preserved</span></div><div class="speed-readout"><span id="speed-value">0.75</span><span class="speed-unit">×</span><button id="reset-speed" title="Reset speed to 1×">Reset</button></div><div class="speed-slider"><input type="range" id="speed" min="0.25" max="1.5" step="0.05" value="0.75" aria-label="Playback speed"><div class="range-labels"><span>0.25×</span><span>1×</span><span>1.5×</span></div></div><div class="speed-presets" aria-label="Speed presets"><button data-speed="0.5">0.5×</button><button data-speed="0.75" class="selected" aria-pressed="true">0.75×</button><button data-speed="1">1×</button><button data-speed="1.25">1.25×</button></div></section>
+
+        <section class="tool-card loop-card" aria-labelledby="loop-title"><div class="tool-heading"><h2 id="loop-title">Stay in the loop</h2><button class="toggle" id="loop-toggle" role="switch" aria-checked="false" aria-label="Enable A–B looping"><span></span></button></div><div class="loop-fields"><div><label for="loop-start"><span class="point-tag">A</span>Start</label><div class="time-field"><input id="loop-start" type="text" value="0:08.0" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="Loop start time"><button id="set-a" title="Set start to current position (A)" aria-label="Set loop start at current position">Set A</button></div></div><span class="time-separator">→</span><div><label for="loop-end"><span class="point-tag">B</span>End</label><div class="time-field"><input id="loop-end" type="text" value="0:24.0" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="Loop end time"><button id="set-b" title="Set end to current position (B)" aria-label="Set loop end at current position">Set B</button></div></div></div><div class="loop-detail"><span id="loop-length">16.0 second section</span><button id="reset-loop">Clear selection</button></div><button class="jump-loop" id="jump-loop"><svg><use href="#i-loop"/></svg>Play this section<svg class="jump-chevron"><use href="#i-chevron"/></svg></button></section>
+      </div>
+
+      <div class="practice-tip"><span class="tip-number">01—</span><p><strong>Start small. Sound better.</strong> Pick a few seconds, slow them down, then build your speed.</p><button id="guide-btn">Quick guide <span>↗</span></button></div>
+      <footer class="main-footer"><span>MADE FOR THE WAY YOU LEARN</span><button id="footer-shortcuts"><kbd>space</kbd> play / pause <span>·</span> See shortcuts</button></footer>
+    </main>
+  </div>
+
+  <div class="drop-overlay" id="drop-overlay" hidden><div><svg><use href="#i-upload"/></svg><h2>Drop into your next practice.</h2><p>Add your audio files to get started.</p></div></div>
+  <dialog id="help-dialog"><button class="icon-button dialog-close" aria-label="Close guide"><svg><use href="#i-x"/></svg></button><div class="eyebrow">A FEW HANDY NOTES</div><h2>A little practice.<br>A lot of progress.</h2><ol><li><strong>Bring a song.</strong><span>Add an audio file or try the included demo. Your own tracks are saved in this browser when space allows.</span></li><li><strong>Find your section.</strong><span>Drag the A and B markers, enter exact times, or set each point at the current playhead.</span></li><li><strong>Take your time.</strong><span>Choose a slower speed. The original pitch is preserved in supported browsers. Turn on looping and settle in.</span></li></ol><h3>Keep your hands on your instrument.</h3><div class="shortcut-grid"><span>Play / pause</span><kbd>Space</kbd><span>Set loop start / end</span><span><kbd>A</kbd> <kbd>B</kbd></span><span>Toggle loop</span><kbd>L</kbd><span>Seek 5 seconds</span><span><kbd>←</kbd> <kbd>→</kbd></span><span>Speed down / up</span><span><kbd>−</kbd> <kbd>+</kbd></span><span>Open this guide</span><kbd>?</kbd></div><p class="dialog-note">Audio never leaves your device. Browser data can be cleared by your browser; keep your original song files.</p></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <input type="file" id="file-input" accept="audio/*,.mp3,.wav,.m4a,.ogg,.flac,.aac,.aiff,.aif,.opus,.webm" multiple hidden>
+  <audio id="audio" preload="auto" src="assets/sunday-groove.wav"></audio>
+</body>
+</html>

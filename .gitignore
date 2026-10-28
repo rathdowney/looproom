@@ -1,0 +1,14 @@
+# Local configuration and generated exports
+.env
+.env.*
+!.env.example
+.openai/
+*.log
+*.tar.gz
+*.zip
+
+# Editor and operating-system files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
